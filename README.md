@@ -3,7 +3,7 @@ Um Crud feito em Django para um trabalho da faculdade.
 
 Para utilizar o CRUD:
  
-- Instale o Pillow com o comando "pip install --upgrade Pillow" no terminal.
+- Instale os requirementos com o comando "pip install -r requirements.txt" no terminal.
 
 - execute os comandos "py manage.py makemigrations core" e "py manage.py migrate" no terminal.
 
