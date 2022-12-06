@@ -1,4 +1,4 @@
-# crudproj
+# Projeto CRUD
 Um Crud feito em Django para um trabalho da faculdade.
 
 Para utilizar o CRUD:
