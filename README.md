@@ -10,3 +10,5 @@ Para utilizar o CRUD:
 - crie um usuário utilizando o comando "py manage.py createsuperuser"(é possível criar outros usuários pelo django admin)
 
 - execute o comando "py manage.py runserver", faça login e agora é possível utilizar o CRUD.
+
+Se você estiver usando um ambiente virtual no VSCode pode ser seja necessário apontar o caminho para o interpretador Python.
