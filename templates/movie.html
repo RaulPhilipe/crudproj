@@ -1,0 +1,88 @@
+{% extends "model-page.html" %}
+
+{% block style%}
+<style>
+    .detail-title{
+        text-align: center;
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    .movie-photo{
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .container{
+        margin-bottom: 10rem;
+    }
+
+    .update-button > button{
+        background-color: #6F2DA8;
+        color: #fff;
+    }
+
+    .update-button > button:hover{
+        transition: ease-in 0.2s;
+        opacity: 0.9;
+        background-color: #6F2DA8;
+        color: #fff
+    }
+
+    .movie-description{
+        text-align: justify;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        line-height: 1.5rem;
+    }
+    
+</style>
+{% endblock%}
+
+{% block content %}
+<h1 class="detail-title">{{movie.title}}</h1>
+
+<!-- The Modal -->
+<div class="modal fade" id="modal_confirm">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Deseja realmente excluir?</h4>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-right">
+                <a href="/movie/delete/{{ movie.id }}/">
+                    <button type="button" class="btn btn-danger">EXCLUIR</button>
+                </a>
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="photo-container">
+                <img src="{{ movie.photo.url }}" alt="" class="movie-photo">
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <p class="movie-description">{{ movie.description }}</p>
+            <p class="movie-description"><b>Nota: </b>{{ movie.score }}</p>
+            <p class="movie-description"><b>Gênero: </b>{{ movie.genre }}</p>
+            {% if request.user == movie.user %}
+            <a href="/movie/register/?id={{ movie.id }}" class="update-button">
+                <button type="button" class="btn">Alterar</button>
+            </a>
+
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#modal_confirm">Excluir</button>
+
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

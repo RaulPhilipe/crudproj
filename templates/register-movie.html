@@ -1,0 +1,90 @@
+{% extends "model-page.html" %}
+
+{% block style %}
+<style>
+     .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10rem;
+        }
+
+        .form-group{
+            width: 100%;
+            margin: 1rem;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            line-height: 1.5rem;
+        }
+
+        .form-control{
+            text-align: justify;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            line-height: 1.5rem;
+        }
+
+        .submit-title{
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 1.5rem;
+        }
+
+        .container > button{
+            width: 8rem;
+            background-color: #6F2DA8;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .container > button:hover {
+            transition: ease-in 0.2s;
+            opacity: 0.9;
+            background-color: #6F2DA8;
+            color: #fff;
+        }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 class="submit-title">Cadastrar Filme</h1>
+
+<form enctype="multipart/form-data" action="submit" , method="POST">{% csrf_token %}
+    <input type="number" class="form-control" name="movie-id" value="{{ movie.id }}" hidden>
+    <div class="container">
+        <div class="form-group">
+            <label for="genre">Gênero:</label>
+            <input class="form-control" name="genre" type="text" value="{{ movie.genre }}">
+        </div>
+        <div class="form-group">
+            <label for="score">Nota:</label>
+            <input class="form-control" name="score" type="number" value="{{ movie.score }}" min="0" max="10">
+        </div>
+        <div class="form-group">
+            <label for="title">Titulo:</label>
+            <input class="form-control" name="title" type="text" value="{{ movie.title }}">
+        </div>
+        <div class="form-group">
+            <label for="description">Descrição:</label>
+            <textarea name="description" class="form-control" rows="5" >{{movie.description}}</textarea>
+        </div>
+        <div class="form-group">
+            {% if movie %}
+            <a href="/media/{{ movie.photo }}" target="_blank">Foto Atual</a><br>
+            <input class="form-control-file border" name="file" type="file" accept="image/*">
+            {% else %}
+            <input class="form-control-file border" name="file" type="file" accept="image/*">
+            {%endif%}
+        </div>
+        <button class="btn" type="submit">
+            {% if movie  %}
+                Alterar
+            {% else %}
+                Cadastrar
+            {% endif %}
+            </button>
+    </div>
+</form>
+{% endblock %}
