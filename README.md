@@ -11,4 +11,4 @@ Para utilizar o CRUD:
 
 - execute o comando "py manage.py runserver", faça login e agora é possível utilizar o CRUD.
 
-Se você estiver usando um ambiente virtual no VSCode pode ser seja necessário apontar o caminho para o interpretador Python.
+Se você estiver usando um ambiente virtual no VSCode pode ser que seja necessário apontar o caminho para o interpretador Python.
